@@ -5,7 +5,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
-  background-color: #800000;
+  background-color: #000000;
   background-image:url('../img/can1.jpg');
   background-size: 100% 100%;
   /*color: #fff;*/
@@ -15,6 +15,19 @@ body {
 /*
  * Global add-ons
  */
+
+
+#Topic {
+
+margin-top:100%;
+width:70%;
+
+}
+
+.row {
+padding-left:35%;
+}
+
 
 .sub-header {
   padding-bottom: 10px;

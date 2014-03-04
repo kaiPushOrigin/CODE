@@ -29,38 +29,49 @@
     </head>
 <!-- NAVBAR
   ================================================== -->
-  <body>
-    <div class="navbar-wrapper">
-      <div class="container">
+ 
 
-        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#"></a>
-            </div>
-            <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact Our Developers<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Satish</a></li>
-                    <li><a href="#">Siddy</a></li>
-                    <li><a href="#">Srushti</a></li>
-                    <li><a href="#">Kashif</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
+<?php include "php/db.php"; ?>
+   <body role="document">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">SELECT YOUR PROVINCE</a>
         </div>
+          <ul class="nav navbar-nav">
+<form id="form1" name="form1" action="province.php"
+            method="post">
+
+<?php
+
+$sql = "SELECT distinct Prov_Name FROM data_pl GROUP BY Prov_Name;";
+
+$result = mysql_query($sql)
+        or die(mysql_error());
+if ($result != 0) {
+    
+    echo '<select id = "prov" name="prov">';
+    echo '<option value="">all</option>';
+
+    $num_results = mysql_num_rows($result);
+    for ($i=0;$i<$num_results;$i++) {
+        $row = mysql_fetch_array($result);
+        $name = $row['Prov_Name'];
+        echo '<option value="' .$name. '">' .$name. '</option>';
+    }
+   $pr = $_GET["prov"];
+   echo $pr;
+    echo '</select>';
+    echo '</label>';    
+}
+?>
+<input type="submit" value="Submit!" onClick="test()" />
+</form>
+
+
+        </ul>
 
       </div>
     </div>
@@ -77,32 +88,39 @@
       </ol>
       <div class="carousel-inner">
         <div class="item active">
-          <img src="img/img2.jpg" alt="First slide" class = "img-responsive">
+          <img src="img/t2.jpg" alt="First slide" class = "img-responsive">
           <div class="container">
             <div class="carousel-caption">
-              <h1>CAN - POP</h1>
-              <p>One World. One Data. Yours.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Visit App</a></p>
+              <h1>CANDIFICATION</h1>
+              <p>The app displays census information for your favorite province or city. <br />
+                 Our goal is to make this information accessible to general public, govt. and big corporation.<br/>
+			
             </div>
           </div>
         </div>
         <div class="item">
-          <img src="img/img1.jpg" alt="Second slide">
+          <img src="img/t1.png" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>What is CAN - POP?</h1>
-              <p>CAN - POP Header 2</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Visit App</a></p>
+              <h1>What is CANDIFICATION</h1>
+              <p>To get started, select your favorite province to start with :<br />
+
+			Select your favorite city.<br />
+
+			Select what you want to know about.<br />
+
+			See the result on an interactive map.</p></p>
+                <p><a class="btn btn-lg btn-primary" href="#" role="button">VISIT APP</a></p>
               </div>
             </div>
           </div>
           <div class="item">
-            <img src="img/img3.jpg" alt="Third slide">
+            <img src="img/test.jpg" alt="Third slide">
             <div class="container">
               <div class="carousel-caption">
                 <h1>What Else?</h1>
-                <p>CAN - POP Header 3</p>
-                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Visit App</a></p>
+                <p>One World. One Data. Yours.</p>
+                  <p><a class="btn btn-lg btn-primary" href="#" role="button">VISIT APP</a></p>
                 </div>
               </div>
             </div>
@@ -112,7 +130,12 @@
         </div><!-- /.carousel -->
       </div> <!-- /container -->
 
-
+ <script>
+          function visitApp()
+          {
+          window.open("welcome.html", "_self");
+          }
+            </script>
 
     <!-- Marketing messaging and featurettes
     ================================================== -->
@@ -121,18 +144,6 @@
 
     <!-- /END THE FEATURETTES -->
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <!-- FOOTER -->
-    <footer>
-      <p class="pull-right"><a href="#">Back to top</a></p>
-      <p>&copy; 2014 SMUNav Inc. All Rights Reserved &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </footer>
-
-  </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
